@@ -6,7 +6,7 @@ RSpec.describe 'movie show page' do
       movie = studio.movies.create!(title: 'Matrix', creation_year: '1999', genre: 'Science Fiction')
       actor_1 = Actor.create!(name: "Carrie-Anne", age: "29")
       actor_2 = Actor.create!(name: "Keanu", age: "28")
-      actor_3 = Actor.create!(name: "Laurence Fishburne", age: "42")
+      actor_3 = Actor.create!(name: "Laurence", age: "42")
       ActorMovie.create!(movie: movie, actor: actor_1)
       ActorMovie.create!(movie: movie, actor: actor_2)
       ActorMovie.create!(movie: movie, actor: actor_3)
@@ -20,12 +20,18 @@ RSpec.describe 'movie show page' do
       expect(page).to have_content('Average age: 33')
     end
 
-    xit 'can see form to add an actor to movie' do
+    it 'can see form to add an actor to movie' do
       studio = Studio.create!(name: 'Warner Bros.', location: "Burbank, California")
       movie = studio.movies.create!(title: 'Matrix', creation_year: '1999', genre: 'Science Fiction')
+      actor_1 = Actor.create!(name: "Carrie-Anne", age: "29")
+      actor_2 = Actor.create!(name: "Keanu", age: "28")
+      actor_3 = Actor.create!(name: "Laurence Fishburne", age: "42")
 
       visit "/movies/#{movie.id}"
 
+      fill_in :actor, with: 'Hugo'
+      click_botton 'Add Actor'
 
+      expect(page).to have_content("Hugo")
     end
 end
