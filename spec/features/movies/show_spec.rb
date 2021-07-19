@@ -29,8 +29,8 @@ RSpec.describe 'movie show page' do
 
       visit "/movies/#{movie.id}"
 
-      fill_in :actor, with: 'Hugo'
-      click_botton 'Add Actor'
+      fill_in :name, with: 'Hugo'
+      click_button 'Add Actor'
 
       expect(page).to have_content("Hugo")
     end
