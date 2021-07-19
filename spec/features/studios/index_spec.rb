@@ -12,7 +12,7 @@ RSpec.describe 'studio index' do
 
     expect(page).to have_content(studio_1.name)
     expect(page).to have_content(studio_1.location)
-    # expect(page).to have_content("Matrix")
+    expect(page).to have_content("Matrix")
     expect(page).to have_content(studio_2.name)
     expect(page).to have_content(studio_2.location)
   end
